@@ -112,7 +112,7 @@
         min-width: 240px;
         width: 100%;
         max-width: 300px;
-        background-color: var(----white-100-opcty-212);
+        background-color: var(--white-100-opcty-212);
         border: 1px solid var(--white-95);
         transition: left var(--default-duration) ease;
     }
@@ -120,6 +120,160 @@
         left: 0;
     }
 }
+
+
+.home {
+    position: relative;
+    height: var(--full-view-height);
+    padding-top: var(--header-height);
+}
+
+.home__content {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.home__slide {
+    height: var(--full-view-height);
+    width: 100%;
+    background-color: var(--white-100);
+}
+
+.home__image {
+    width: 100%;
+    height: 100%;
+    transform: translateY(100px) scale(0.5);
+    opacity: 0;
+    transition: transform var(--fast-duration) ease, opacity var(--fast-duration) ease;
+}
+
+.home__slide.reveal .home__image {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+.home__image img {
+    object-fit: contain !important;
+}
+
+.home__description {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.home__sub-heading {
+    font-size: clamp(var(--font-size-1-5), 4vw, var(--font-size-2));
+    font-weight: var(--font-semi-bold);
+    text-transform: capitalize;
+    color: var(--dark-lead);
+    transform: scaleX(0.2);
+    opacity: 0;
+    transition: transform var(--fast-duration) ease, opacity var(--fast-duration) ease;
+}
+
+.home__heading {
+    font-size: clamp(var(--font-size-2-5), 6vw, var(--font-size-3) * 1.5);
+    color: var(--black-100);
+    text-transform: capitalize;
+    transform: scaleX(0.2);
+    opacity: 0;
+    transition: transform var(--fast-duration) ease, opacity var(--fast-duration) ease;
+    transition-delay: 0.5s;
+}
+
+.home__slide.reveal :where(.home__sub-heading, .home__heading) {
+    transform: scaleX(1);
+    opacity: 1;
+}
+
+.shop-btn {
+    display: block;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: var(--padding-1) var(--padding-3);
+    background-color: var(--dark-lead);
+    font-weight: var(--font-semi-bold);
+    color: var(--white-100);
+    text-transform: uppercase;
+    white-space: nowrap;
+    z-index: 20;
+    transition: background var(--default-duration) ease;
+}
+
+.shop-btn:hover {
+    background-color: var(--dark-lead-hover);
+}
+
+.go-down-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 50px;
+    right: 15%;
+    width: 90px;
+    height: 90px;
+    z-index: 20;
+    transition: transform var(--default-duration) linear;
+}
+
+.go-down-btn:hover {
+    transform: scale(1.1);
+}
+
+.go-down-btn .icon {
+    font-size: var(--font-size-2);
+}
+
+.go-down-btn .circle-text {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    animation: rotateText var(--slowest-duration) infinite forwards;
+}
+
+.go-down-btn .circle-text span {
+    position: absolute;
+    font-size: calc(var(--font-size-1) / 1.3);
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: 0 45px;
+}
+
+@keyframes rotateText {
+    from {
+        transform: rotate(360deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
