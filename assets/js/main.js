@@ -1,4 +1,5 @@
 import ProductCard from "./ProductCard.js";
+import TrendingCard from "./TrendingCard.js";
 
 const API_URL = "./assets/api/products.json";
 
@@ -8,6 +9,7 @@ const circleBtn = document.querySelector(".go-down-btn");
 const newContent = document.querySelector(".new__products");
 const shopContent = document.querySelector(".shop__products");
 const shopCategories = document.querySelectorAll(".shop__category");
+const trendingContent = document.querySelector(".trending__products");
 
 
 //toggle menu
@@ -140,11 +142,36 @@ shopCategories.forEach((category) => {
     });
 });
 
+//trending products API
+async function renderTrendingProducts() {
+    const response = await fetch(API_URL);
+    const data = await response.json();
+
+    data.map((product) => {
+        if (product.isTrending) {
+            trendingContent.innerHTML += TrendingCard(product);
+        }
+    });
+
+    //swiper trending products
+    const trendingSectionSwiper = new Swiper(".trending__content", {
+        loop: true,
+        effect: "fade",
+        speed: 600,
+        allowTouchMove: false,
+        autoplay: {
+            delay: 6000
+        }
+    });
+
+}
+
 
 //onload
 window.addEventListener("load", () => {
     renderNewProducts();
     renderShopProducts();
+    renderTrendingProducts();
     document.querySelector(".home__slide").classList.add("reveal");
 });
 
