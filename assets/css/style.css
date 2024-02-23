@@ -60,7 +60,8 @@
     transition: all var(--default-duration) ease-in-out;
 }
 
-.header__link a:hover::after {
+.header__link a:hover::after,
+.header__link a.active::after {
     bottom: -5px;
     opacity: 1;
 }
@@ -709,9 +710,26 @@
 }
 
 
+.scroll-up {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: calc(var(--padding-1) / 2);
+    position: fixed;
+    bottom: 0;
+    right: 30px;
+    opacity: 0;
+    z-index: -1;
+    pointer-events: none;
+    transition: all var(--default-duration) ease;
+}
 
-
-
+.scroll-up.show {
+    bottom: 60px;
+    opacity: 1;
+    z-index: 500;
+    pointer-events: all;
+}
 
 
 
