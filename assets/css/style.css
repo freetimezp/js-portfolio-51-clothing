@@ -342,8 +342,9 @@
 
 .product-card__description .row {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    padding-inline: 10px;
 }
 
 .product-card__description .border-animation {

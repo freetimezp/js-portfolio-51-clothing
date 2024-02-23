@@ -44,7 +44,7 @@ homeSwiper.on("slideChangeTransitionEnd", () => {
 });
 
 
-//products API
+//new products API
 async function renderShopProducts() {
     const response = await fetch(API_URL);
     const data = await response.json();
@@ -52,6 +52,47 @@ async function renderShopProducts() {
     data.map((product) => {
         if (product.isNew) {
             newContent.innerHTML += ProductCard(product);
+        }
+    });
+
+    const productCards = newContent.querySelectorAll(".product-card");
+    productCards.forEach((product) => {
+        product.classList.add("new__product");
+        const image = product.querySelector("img");
+        product.addEventListener("mouseover", () => {
+            if (product.dataset.image2 !== "undefined") {
+                image.src = product.dataset.image2;
+            }
+        });
+        product.addEventListener("mouseleave", () => {
+            image.src = product.dataset.image1;
+        });
+    });
+
+
+    //swiper new products
+    const nesSwiper = new Swiper(".new__content", {
+        slidesPerView: 4,
+        spaceBetween: 20,
+        loop: true,
+        grabCursor: true,
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+            0: {
+                slidesPerView: 1,
+            },
+            768: {
+                slidesPerView: 2,
+            },
+            992: {
+                slidesPerView: 3,
+            },
+            1200: {
+                slidesPerView: 4,
+            },
         }
     });
 }
