@@ -83,9 +83,35 @@
         </a>
     </section>
 
+    <section class="section new" id="new">
+        <div class="section__title">
+            <h1>New Arrivals</h1>
+        </div>
+        <div class="new__container container">
+            <div class="new__btns swiper-btns">
+                <button class="swiper-btn swiper-button-prev btn btn-border btn-border-black" id="arrow-left">
+                    <span class="material-symbols-rounded">
+                        arrow_back_ios_new
+                    </span>
+                </button>
+                <button class="swiper-btn swiper-button-next btn btn-border btn-border-black" id="arrow-right">
+                    <span class="material-symbols-rounded">
+                        arrow_forward_ios
+                    </span>
+                </button>
+            </div>
+            <div class="new__content swiper">
+                <div class="new__products products swiper-wrapper">
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script type="module" src="./assets/js/ProductCard.js"></script>
     <script src="./assets/js/swiper.js"></script>
     <script src="./assets/js/scrollReveal.js"></script>
-    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/main.js" defer type="module"></script>
 </body>
 
 </html>

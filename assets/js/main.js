@@ -1,13 +1,18 @@
-//toggle menu
+import ProductCard from "./ProductCard.js";
+
+const API_URL = "./assets/api/products.json";
+
 const navBar = document.querySelector(".header");
 const navBtn = document.querySelector(".header__btn");
+const circleBtn = document.querySelector(".go-down-btn");
+const newContent = document.querySelector(".new__products");
 
+//toggle menu
 navBtn.addEventListener('click', () => {
     document.body.classList.toggle("menu-toggled");
 });
 
 //circle text
-const circleBtn = document.querySelector(".go-down-btn");
 let circleText = circleBtn.querySelector(".circle-text");
 
 circleText.innerHTML = circleText.textContent
@@ -38,16 +43,25 @@ homeSwiper.on("slideChangeTransitionEnd", () => {
     prevSlide.classList.remove("reveal");
 });
 
+
+//products API
+async function renderShopProducts() {
+    const response = await fetch(API_URL);
+    const data = await response.json();
+
+    data.map((product) => {
+        if (product.isNew) {
+            newContent.innerHTML += ProductCard(product);
+        }
+    });
+}
+
+
+//onload
 window.addEventListener("load", () => {
+    renderShopProducts();
     document.querySelector(".home__slide").classList.add("reveal");
 });
-
-
-
-
-
-
-
 
 
 
